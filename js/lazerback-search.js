@@ -1,75 +1,15 @@
-// Prepare page with search modal
+/**!
+ * lazerback-search.js v0.1
+ * Author: Marin Balabanov
+ * Licence: Apache-2.0
+ * https://github.com/mbalabanov/lazerback
+ */
 
-const modal = document.createElement("div");
-modal.className = "modal fade";
-modal.id = "searchModal";
-modal.tabIndex = -1;
-modal.setAttribute("aria-labelledby", "searchModalLabel");
-modal.setAttribute("aria-hidden", "true");
-
-const modalDialog = document.createElement("div");
-modalDialog.className = "modal-dialog modal-dialog-scrollable";
-
-const modalContent = document.createElement("div");
-modalContent.className = "modal-content";
-
-const modalBody = document.createElement("div");
-modalBody.className = "modal-body";
-
-const searchLabel = document.createElement("label");
-searchLabel.setAttribute("for", "searchInput");
-searchLabel.className = "fs-6";
-searchLabel.textContent = "Type your search term and press 'Return/Enter':";
-
-const inputGroup = document.createElement("div");
-inputGroup.className = "input-group mb-3";
-
-const searchInput = document.createElement("input");
-searchInput.type = "text";
-searchInput.className = "form-control";
-searchInput.id = "searchInput";
-searchInput.placeholder = "What would you like to find?";
-
-const searchButton = document.createElement("button");
-searchButton.className = "btn btn-outline-secondary";
-searchButton.type = "button";
-searchButton.textContent = "Search";
-searchButton.onclick = function() {
-  searchInText();
-};
-
-inputGroup.appendChild(searchInput);
-inputGroup.appendChild(searchButton);
-
-const searchResults = document.createElement("ul");
-searchResults.id = "searchResults";
-searchResults.className = "list-group text-start";
-
-modalBody.appendChild(searchLabel);
-modalBody.appendChild(inputGroup);
-modalBody.appendChild(searchResults);
-
-modalContent.appendChild(modalBody);
-modalDialog.appendChild(modalContent);
-modal.appendChild(modalDialog);
-
-if (document.body) {
-  document.body.appendChild(modal);
-}
-
-// Get the site index
+generateSearchModal();
 
 let indexdata = [];
-
-import("./site-index.js").then((module) => {
-  indexdata = module.indexdata;
-});
-
-// This is the code used for the search functionality on the website
-
 let inputElement = document.getElementById("searchInput");
 let resultsElement = document.getElementById("searchResults");
-
 let searchTerm = "";
 
 if (inputElement && resultsElement) {
@@ -81,6 +21,10 @@ if (inputElement && resultsElement) {
 }
 
 function triggerSearch() {
+  import("./site-index.js").then((module) => {
+    indexdata = module.indexdata;
+  });
+
   const searchModal = new bootstrap.Modal(
     document.getElementById("searchModal")
   );
@@ -117,6 +61,65 @@ function displaySearchResults(searchResults) {
   });
 }
 
+function generateSearchModal() {
+  const modal = document.createElement("div");
+  modal.className = "modal fade";
+  modal.id = "searchModal";
+  modal.tabIndex = -1;
+  modal.setAttribute("aria-labelledby", "searchModalLabel");
+  modal.setAttribute("aria-hidden", "true");
+
+  const modalDialog = document.createElement("div");
+  modalDialog.className = "modal-dialog modal-dialog-scrollable";
+
+  const modalContent = document.createElement("div");
+  modalContent.className = "modal-content";
+
+  const modalBody = document.createElement("div");
+  modalBody.className = "modal-body";
+
+  const searchLabel = document.createElement("label");
+  searchLabel.setAttribute("for", "searchInput");
+  searchLabel.className = "fs-6";
+  searchLabel.textContent = "Type your search term and press 'Return':";
+
+  const inputGroup = document.createElement("div");
+  inputGroup.className = "input-group mb-3";
+
+  const searchInput = document.createElement("input");
+  searchInput.type = "text";
+  searchInput.className = "form-control";
+  searchInput.id = "searchInput";
+  searchInput.placeholder = "What would you like to find?";
+
+  const searchButton = document.createElement("button");
+  searchButton.className = "btn btn-outline-secondary";
+  searchButton.type = "button";
+  searchButton.textContent = "Search";
+  searchButton.onclick = function() {
+    searchInText();
+  };
+
+  inputGroup.appendChild(searchInput);
+  inputGroup.appendChild(searchButton);
+
+  const searchResults = document.createElement("ul");
+  searchResults.id = "searchResults";
+  searchResults.className = "list-group text-start";
+
+  modalBody.appendChild(searchLabel);
+  modalBody.appendChild(inputGroup);
+  modalBody.appendChild(searchResults);
+
+  modalContent.appendChild(modalBody);
+  modalDialog.appendChild(modalContent);
+  modal.appendChild(modalDialog);
+
+  if (document.body) {
+    document.body.appendChild(modal);
+  }
+}
+
 // This gets the URL parameter search and highlights the first occurrence of the search term on the page
 
 let search = window.location.search;
@@ -143,6 +146,6 @@ if (main && decodedSearch) {
 
     setTimeout(() => {
       document.querySelector("mark").scrollIntoView();
-    }, 0);
+    }, 1000);
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "lazerback-search",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A simple but efficient website search in JavaScript for static websites.",
   "main": "index_script.js",
   "scripts": {

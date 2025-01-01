@@ -51,6 +51,13 @@ function searchInText() {
 }
 
 function displaySearchResults(searchResults) {
+  if (searchResults.length === 0) {
+    let noResults = document.createElement("li");
+    noResults.classList.add("list-group-item");
+    noResults.textContent = "No results found.";
+    resultsElement.appendChild(noResults);
+    return;
+  }
   let urlEncodedSearchTerm = encodeURIComponent(searchTerm);
   searchResults.forEach((item) => {
     let itemAnchor = document.createElement("a");

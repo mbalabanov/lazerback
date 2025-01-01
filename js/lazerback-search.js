@@ -1,7 +1,7 @@
 /**!
  * lazerback-search.js v0.1
  * Author: Marin Balabanov
- * Licence: Apache-2.0
+ * Licence: CC0-1.0
  * https://github.com/mbalabanov/lazerback
  */
 

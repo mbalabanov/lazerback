@@ -35,7 +35,15 @@ After adding `search.js` to your HTML, you will need to provide the UI with a tr
 Please note that the search UI uses elements from Bootstrap5. You do not need to use Bootstrap if you don't want to but you'll need to cahnge the modal div.
 
 ## Examples
-Please see the examples I created to demonstrate how the search functionality works in a practical setup. They use text from the Project Gutenberg eBook of [English Fairy Tales](https://www.gutenberg.org/ebooks/7439) compiled by Joseph Jacobs, a copyright-free collection of classic tales. To implement the search, the necessary JavaScript files, including the siteindex.js and the search modal script, are linked in the HTML pages. The UI integrates seamlessly into the website, featuring a Bootstrap-styled modal with an intuitive search field and a results list. Users can type a query, view a list of matching results, and navigate directly to the relevant content within the selected page, with the searched term highlighted for easy identification.
+Please see the examples I created to demonstrate how the search functionality works in a practical setup. They use text from the Project Gutenberg eBook of [English Fairy Tales](https://www.gutenberg.org/ebooks/7439) compiled by Joseph Jacobs, a copyright-free collection of classic tales. 
+
+To implement the search, the necessary JavaScript files, including the siteindex.js and the search modal script, are linked in the HTML pages. The UI integrates seamlessly into the website, featuring a Bootstrap-styled modal with an intuitive search field and a results list.
+
+![Example Search](img/example-screenshot.jpg)
+
+Users can type a query, view a list of matching results, and navigate directly to the relevant content within the selected page, with the searched term highlighted for easy identification.
+
+All title images for the fairy tales are generated using ChatGPT (with text added using Art Text 4).
 
 ## More Infos
 You can find out more details about how the search works and how I created it here: [marincomics.com/website-search-function.html](https://marincomics.com/website-search-function.html)
